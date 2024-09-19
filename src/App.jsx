@@ -1,35 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import List from "./components/List/List";
+import Message from "./components/Message/Message";
+import Modal from "./components/Modal/Modal";
+import WelcomeSection from "./components/WelcomeSection/WelcomeSection";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
+  const isOnline = false;
+  const isLoading = false;
+  const age = 15;
+  const filmsData = [
+    { id: "1", title: "GOT" },
+    { id: 2, title: "Taxi" },
+  ];
+  const goodsData = [
+    { id: "1", title: "Морква" },
+    { id: 2, title: "Цибуля" },
+  ];
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <WelcomeSection />
+      <Header />
+      <p>Супер форум</p>
+      {isOnline && <h2>Welcomme</h2>}
+      {isLoading && <h2>Loading...</h2>}
+      {age > 18 ? <h2>ти дивви який вимахав</h2> : <h2>Тобї ще кашу їсть</h2>}
+      <Message author="Petro" message="продам диван!" />
+      <Message author="Nata" message="Hello" />
+      <Message message="Whatsup!" />
+      <List title="Films" data={filmsData} />
+      <List title="Goods" data={goodsData} />
+      <Modal>
+        <h2>Здам квартиру!</h2>
+        <button>Зняти</button>
+      </Modal>
+      <Modal>
+        <h2>Ви дїйсно хочете вийти?</h2>
+        <button>Так</button>
+        <button>Нї</button>
+      </Modal>
+      <Footer />
     </>
-  )
-}
-
-export default App
+  );
+};
+export default App;
