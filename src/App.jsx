@@ -19,9 +19,8 @@ const App = () => {
   ];
   return (
     <>
-      <WelcomeSection />
       <Header />
-      <p>Супер форум</p>
+      <p className="title">Супер форум</p>
       {isOnline && <h2>Welcomme</h2>}
       {isLoading && <h2>Loading...</h2>}
       {age > 18 ? <h2>ти дивви який вимахав</h2> : <h2>Тобї ще кашу їсть</h2>}
