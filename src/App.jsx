@@ -3,7 +3,10 @@ import Header from "./components/Header/Header";
 import List from "./components/List/List";
 import Message from "./components/Message/Message";
 import Modal from "./components/Modal/Modal";
-import WelcomeSection from "./components/WelcomeSection/WelcomeSection";
+import userData from "./assets/user.json";
+import Profile from "./components/Profile/Profile";
+import animals from "./assets/animals.webp";
+import { FcBookmark } from "react-icons/fc";
 
 const App = () => {
   const isOnline = false;
@@ -20,7 +23,11 @@ const App = () => {
   return (
     <>
       <Header />
-      <p className="title">Супер форум</p>
+      <p className="title">
+        {" "}
+        <FcBookmark className="icon" />
+        Супер форум
+      </p>
       {isOnline && <h2>Welcomme</h2>}
       {isLoading && <h2>Loading...</h2>}
       {age > 18 ? <h2>ти дивви який вимахав</h2> : <h2>Тобї ще кашу їсть</h2>}
@@ -38,6 +45,8 @@ const App = () => {
         <button>Так</button>
         <button>Нї</button>
       </Modal>
+      <Profile user={userData} />
+      <img src={animals} />
       <Footer />
     </>
   );
